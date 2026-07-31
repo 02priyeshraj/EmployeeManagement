@@ -1,0 +1,4 @@
+JDBC Templates->
+1.Static statements
+2.Dynamic statements
+3.Callable statements

@@ -8,7 +8,7 @@ services:
 
     environment:
       MYSQL_ROOT_PASSWORD: Neueda@123
-      MYSQL_DATABASE: company
+      MYSQL_DATABASE: rest
 
     ports:
       - "3306:3306"
@@ -28,26 +28,26 @@ services:
 
     environment:
       SPRING_PROFILES_ACTIVE: docker
-      DB_URL: jdbc:mysql://mysql:3306/company
-      DB_USER: root
-      DB_PASS: Neueda@123
+      SPRING_DATASOURCE_URL: jdbc:mysql://mysql:3306/rest
+      SPRING_DATASOURCE_USERNAME: root
+      SPRING_DATASOURCE_PASSWORD: Neueda@123
 
     ports:
-      - "8082:8082"
+      - "8090:8090"
 
     networks:
       - springboot-network
-  nginx:
-    build:
-      context: ./nginx
-      dockerfile: Dockerfile
-    container_name: nginx-server
-    ports:
-      - "8085:80"
-    depends_on:
-      - springboot-app
-    networks:
-      - springboot-network
+#  nginx:
+#    build:
+#      context: ./nginx
+#      dockerfile: Dockerfile
+#    container_name: nginx-server
+#    ports:
+#      - "8085:80"
+#    depends_on:
+#      - springboot-app
+#    networks:
+#      - springboot-network
 volumes:
   mysql-data:
 
